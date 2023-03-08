@@ -38,12 +38,8 @@ public class Personaje extends Persona{
 			atributos[i][0]=array[num];
 			atributos[i][1]= trueORfalse[valor];
 			
-			if(num==16) {
-				array[16]=" ";
-			}else {
-				for(int n=num; n<array.length; n++) {
-					array[num] = array[num+1];
-				}
+			for(int m=num; m<array.length; m++) {
+				array[num] = array[num+1];
 			}
 			
 			cont++;	
