@@ -3,8 +3,13 @@ import java.io.*;
 import java.util.Scanner;
 
 public class Archivo {
-	
+
+	Archivo archive = new Archivo();
+	Menu miMenu = new Menu();
 	Scanner sc = new Scanner (System.in);
+	FileWriter miFileWriter = null;
+	PrintWriter miPrintWriter = null;
+	
 	
 	public String jugador() {
 		System.out.print("Escriba nombre del jugador: ");
@@ -12,20 +17,41 @@ public class Archivo {
 		return (jugador);
 	}
 	
-	Archivo archive = new Archivo();
+
+	public void crearArchivo() {
 	
-	String player = archive.jugador();
+		String p = archive.jugador();
+		String player = p + ".txt";
 	
-	File archivo = new File(player);
+		File archivo = new File(player);
 	
-	if(!archivo.exists()) {
-		archivo.mkdirs();
+		if(!archivo.exists()) {
+			try {
+				archivo.createNewFile();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+
+		try {
+			miFileWriter = new FileWriter(archivo);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		miPrintWriter = new PrintWriter(miFileWriter);
+		miPrintWriter.print("Jugador");
+		miPrintWriter.print("Juegos ganados");
+		miPrintWriter.print("Juegos perdidos");
+		
 	}
 	
-	FileOutputStream outFileStream = new FileOutputStream(archivo);
-	DataOutputStream outDataStream = new DataOutputStream(outFileStream);
 	
-	outDataStream.write("Jugador: " + player + "\n\n");
+
 	
 	
+
 }
+
