@@ -218,19 +218,24 @@ public class Menu {
 	
 	
 	//Comprueba si el usuario adivinó
-	public void comprobar (String[][]personajeAzar, String[]personajes) {
+	public int comprobar (String[][]personajeAzar, String[]personajes) {
 		System.out.println("\n\nInserte el número del personaje que cree que escogió el sistema: ");
 		int numGuess = input.nextInt();
 		String guess = personajes[numGuess];
+		int t= 0;
 		
 		String personaje = personajeAzar[0][0];
 		
 		
 		if(guess == personaje) {
 			System.out.print("Felicidades! Adivinó el personaje");
+			t= 1;
 		}else if(guess!=personaje) {
 			System.out.print("Incorrecto, el personaje era: "+ personaje + "\n Suerte para la próxima" );
+			t=0;
 		}
+		
+		return(t);
 	}
 	 
 
