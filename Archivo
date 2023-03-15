@@ -1,0 +1,31 @@
+package herencia;
+import java.io.File;
+import java.util.Scanner;
+
+public class Archivo {
+	
+	Scanner sc = new Scanner (System.in);
+	
+	public String jugador() {
+		System.out.print("Escriba nombre del jugador: ");
+		String jugador = sc.nextLine();
+		return (jugador);
+	}
+	
+	Archivo archive = new Archivo();
+	
+	String player = archive.jugador();
+	
+	File archivo = new File(player);
+	
+	if(!archivo.exists()) {
+		archivo.mkdirs();
+	}
+	
+	FileOutputStream outFileStream = new FileOutputStream(archivo);
+	DataOutputStream outDataStream = new DataOutputStream(outFileStream);
+	
+	outDataStream.write("Jugador: " + player + "\n\n");
+	
+	
+}
